@@ -5,11 +5,11 @@ const Account = models.Account;
 
 // Rendering basic pages
 const loginPage = (req, res) => {
-  res.render('login', {csrfToken: req.csrfToken()});
+  res.render('login', { csrfToken: req.csrfToken() });
 };
 
 const signupPage = (req, res) => {
-  res.render('signup',{csrfToken: req.csrfToken()});
+  res.render('signup', { csrfToken: req.csrfToken() });
 };
 
 const logout = (req, res) => {
