@@ -8,10 +8,6 @@ const loginPage = (req, res) => {
   res.render('login', { csrfToken: req.csrfToken() });
 };
 
-const signupPage = (req, res) => {
-  res.render('signup', { csrfToken: req.csrfToken() });
-};
-
 const logout = (req, res) => {
   // destroy old user ID
   req.session.destroy();
@@ -38,6 +34,15 @@ const login = (request, response) => {
     req.session.account = Account.AccountModel.toAPI(account);
     return res.json({ redirect: '/maker' });
   });
+};
+
+const getToken = (request, response) => {
+  const req = request;
+  const res = response;
+
+  const csrfJSON = { csrfToken: req.csrfToken() };
+
+  res.json(csrfJSON);
 };
 
 const signup = (request, response) => {
@@ -86,6 +91,6 @@ module.exports = {
   loginPage,
   login,
   logout,
-  signupPage,
   signup,
+  getToken,
 };
