@@ -13,7 +13,9 @@ const logout = (req, res) => {
   req.session.destroy();
   res.redirect('/');
 };
-
+const userList = (req, res) => {
+  res.render('users');
+};
 const login = (request, response) => {
   // Grab username and password from passed in data
   const req = request;
@@ -86,6 +88,18 @@ const signup = (request, response) => {
   });
 };
 
+// Retrieves all accounts
+const getAccounts = (request, response) => {
+  const res = response;
+
+  // Sending back users
+  return Account.AccountModel.find((err, docs) => {
+    if (err) return res.status(400).json({ err });
+
+    return res.json({ users: docs });
+  });
+};
+
 // Exports
 module.exports = {
   loginPage,
@@ -93,4 +107,6 @@ module.exports = {
   logout,
   signup,
   getToken,
+  userList,
+  getAccounts,
 };

@@ -24,6 +24,11 @@ const AccountSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  domosMade: {
+    type: Number,
+    required: true,
+    default: 0,
+  },
   createdDate: {
     type: Date,
     default: Date.now,
